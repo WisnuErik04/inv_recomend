@@ -1,0 +1,5 @@
+@import "tailwindcss";
+
+.fi-body .fi-layout .fi-sidebar {
+    @apply bg-blue-500;
+}

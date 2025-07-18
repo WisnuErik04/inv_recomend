@@ -52,8 +52,13 @@ class User extends Authenticatable
         ];
     }
 
-    public function leave_approvals() : HasMany
+    public function leave_approvals(): HasMany
     {
         return $this->hasMany(LeaveApproval::class);
+    }
+
+    public function canAccessPanel(Panel $panel): bool
+    {
+        return true; // sementara izinkan semua
     }
 }

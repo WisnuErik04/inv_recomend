@@ -26,10 +26,10 @@ class ProdukResource extends Resource
             Forms\Components\TextInput::make('nim')->required(),
             Forms\Components\TextInput::make('harga')->numeric()->required(),
             Forms\Components\TextInput::make('stok')->numeric()->required(),
-            ]);
+            ]); 
     }
 
-    public static function table(Table $table): Table
+    public static function table(Table $table): Table 
     {
         return $table
             ->columns([

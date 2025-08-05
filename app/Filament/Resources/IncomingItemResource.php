@@ -36,7 +36,7 @@ class IncomingItemResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-inbox-arrow-down';
     protected static ?string $navigationLabel = 'Barang Masuk';
-    protected static ?string $breadcrumb = 'Barang Masuk';
+    protected static ?string $breadcrumb = 'Barang Masuk'; 
 
     // CreateAction::make()
     // ->mutateFormDataUsing(function (array $data): array {

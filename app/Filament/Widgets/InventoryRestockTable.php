@@ -53,9 +53,9 @@ class InventoryRestockTable extends BaseWidget
                     fn ($record) => $this->currentStock($record->id)
                 ),
 
-                TextColumn::make('restock')->label('Saran Restock')->getStateUsing(
+                TextColumn::make('restock')->label('Saran Restock')->getStateUsing( 
                     // fn ($record) => max($this->reorderPoint($record->id) - $this->currentStock($record->id), 0)
-                    fn ($record) => $this->reorderPoint($record->id) - $this->currentStock($record->id) . $this->reorderPoint($record->id) . $this->currentStock($record->id)
+                    fn ($record) => $this->reorderPoint($record->id) - $this->currentStock($record->id) .' i ' .$this->reorderPoint($record->id) .' i ' . $this->currentStock($record->id)
                 ),
             ]);
     }

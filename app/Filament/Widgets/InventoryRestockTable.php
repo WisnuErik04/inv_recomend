@@ -34,7 +34,7 @@ class InventoryRestockTable extends BaseWidget
                 ),
 
                 TextColumn::make('avg_lt')->label('Avg LT')->getStateUsing(
-                    fn ($record) => $this->avgLeadTime($record->id) * -1
+                    fn ($record) => $this->avgLeadTime($record->id)
                 ),
 
                 TextColumn::make('max_lt')->label('Max LT')->getStateUsing(
@@ -83,7 +83,7 @@ class InventoryRestockTable extends BaseWidget
     {
         return IncomingItem::where('inventory_id', $inventoryId)
             ->get()
-            ->avg(fn($i) => Carbon::parse($i->tanggal_masuk)->diffInDays(Carbon::parse($i->tanggal_pesan))) ?? 0;    
+            ->avg(fn($i) => Carbon::parse($i->tanggal_masuk)->diffInDays(Carbon::parse($i->tanggal_pesan))) ?? 0 * -1;    
     }
 
     private function maxLeadTime($inventoryId)

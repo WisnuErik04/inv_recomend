@@ -45,8 +45,7 @@ class UserResource extends Resource
                     ->required(),
                 DatePicker::make('joining_date')
                     ->required(),
-                FileUpload::make('photo')
-                    ->required(),
+                FileUpload::make('photo'),
                 Select::make('roles')
                     ->relationship('roles', 'name')
                     ->multiple()

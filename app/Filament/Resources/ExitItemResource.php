@@ -49,7 +49,7 @@ class ExitItemResource extends Resource
                         '2xl' => 8,
                     ])
                     ->schema([
-                        TextInput::make('kode_transaksi')
+                        TextInput::make('kode_transaksi Barang_Keluar')
                             ->required()
                             ->default(fn() => ExitItem::generateKodeTransaksi())
                             ->disabled()

@@ -51,6 +51,7 @@ class InventoryResource extends Resource
                                 '2xl' => 4,
                             ]),
                         TextInput::make('harga_beli')
+                            ->label('harga')
                             ->required()
                             ->prefix('Rp')
                             ->numeric()

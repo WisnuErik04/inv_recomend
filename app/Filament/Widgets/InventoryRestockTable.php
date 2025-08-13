@@ -34,19 +34,19 @@ class InventoryRestockTable extends BaseWidget
                 ),
 
                 TextColumn::make('avg_lt')->label('Avg LT')->getStateUsing(
-                    fn ($record) => $this->avgLeadTime($record->id)
+                    fn ($record) => $this->avgLeadTime($record->id) * -1
                 ),
 
                 TextColumn::make('max_lt')->label('Max LT')->getStateUsing(
-                    fn ($record) => $this->maxLeadTime($record->id)
+                    fn ($record) => $this->maxLeadTime($record->id) * -1
                 ),
 
                 TextColumn::make('safety_stock')->label('Safety Stock')->getStateUsing(
-                    fn ($record) => $this->safetyStock($record->id)
+                    fn ($record) => $this->safetyStock($record->id) * -1
                 ),
 
                 TextColumn::make('reorder_point')->label('ROP')->getStateUsing(
-                    fn ($record) => $this->reorderPoint($record->id)
+                    fn ($record) => $this->reorderPoint($record->id) * -1
                 ),
 
                 TextColumn::make('stok')->label('Stok')->getStateUsing(
@@ -54,7 +54,8 @@ class InventoryRestockTable extends BaseWidget
                 ),
 
                 TextColumn::make('restock')->label('Saran Restock')->getStateUsing(
-                    fn ($record) => max($this->reorderPoint($record->id) - $this->currentStock($record->id), 0)
+                    // fn ($record) => max($this->reorderPoint($record->id) - $this->currentStock($record->id), 0)
+                    fn ($record) => $this->reorderPoint($record->id) - $this->currentStock($record->id)
                 ),
             ]);
     }

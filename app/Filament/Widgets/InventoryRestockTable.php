@@ -34,7 +34,7 @@ class InventoryRestockTable extends BaseWidget
                 ),
 
                 TextColumn::make('avg_lt')->label('Avg LT')->getStateUsing(
-                    fn ($record) => $this->avgLeadTime($record->id)
+                    fn ($record) => $this->avgLeadTime($record->id) * -1
                 ),
 
                 TextColumn::make('max_lt')->label('Max LT')->getStateUsing(
@@ -55,7 +55,7 @@ class InventoryRestockTable extends BaseWidget
 
                 TextColumn::make('restock')->label('Saran Restock')->getStateUsing( 
                     // fn ($record) => max($this->reorderPoint($record->id) - $this->currentStock($record->id), 0)
-                    fn ($record) => $this->reorderPoint($record->id) - $this->currentStock($record->id) .' i ' .$this->reorderPoint($record->id) .' i ' . $this->currentStock($record->id)
+                    fn ($record) => $this->reorderPoint($record->id) - ($this->currentStock($record->id) *-1) 
                 ),
             ]);
     }
@@ -83,7 +83,7 @@ class InventoryRestockTable extends BaseWidget
     {
         return IncomingItem::where('inventory_id', $inventoryId)
             ->get()
-            ->avg(fn($i) => Carbon::parse($i->tanggal_masuk)->diffInDays(Carbon::parse($i->tanggal_pesan))) ?? 0 * -1;    
+            ->avg(fn($i) => Carbon::parse($i->tanggal_masuk)->diffInDays(Carbon::parse($i->tanggal_pesan))) ?? 0;    
     }
 
     private function maxLeadTime($inventoryId)
